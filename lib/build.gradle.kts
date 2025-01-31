@@ -8,6 +8,7 @@
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    `maven-publish`
 }
 
 repositories {
@@ -38,4 +39,26 @@ java {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"]) // Publishes the Java component
+            groupId = "gurjar.singh.komal.javaLiveMusicBeatDetectionLib" // Replace with your package group
+            artifactId = "javaLiveMusicBeatDetectionLib" // Replace with your library name
+            version = "1.0.0" // Update with your actual version
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/komalsinghgurjar/javaLiveMusicBeatDetectionLib")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
+            }
+        }
+   }
 }
