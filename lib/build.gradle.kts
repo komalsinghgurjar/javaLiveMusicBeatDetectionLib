@@ -41,13 +41,18 @@ tasks.named<Test>("test") {
     useJUnitPlatform()
 }
 
+// publishing 
+group = "io.github.komalsinghgurjar"  // Replace with your package group
+artifactIdVal = "javaLiveMusicBeatDetectionLib"
+versionVal = "1.0.0"
+
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
             from(components["java"]) // Publishes the Java component
-            groupId = "gurjar.singh.komal.javaLiveMusicBeatDetectionLib" // Replace with your package group
-            artifactId = "javaLiveMusicBeatDetectionLib" // Replace with your library name
-            version = "1.0.0" // Update with your actual version
+            groupId = group.toString() // Replace with your package group
+            artifactId = artifactIdVal.toString() // Replace with your library name
+            version = versionVal.toString() // Update with your actual version
         }
     }
 
@@ -56,8 +61,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/komalsinghgurjar/javaLiveMusicBeatDetectionLib")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
             }
         }
    }
