@@ -44,7 +44,7 @@ tasks.named<Test>("test") {
 // publishing 
 group = "io.github.komalsinghgurjar"  // Replace with your package group
 val artifactIdVal: String? = "java-live-music-beat-detection-lib"
-val versionVal: String? = "1.0.0"
+val versionVal: String? = "1.0.1"
 
 publishing {
     publications {
