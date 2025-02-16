@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Set GitHub credentials for package publish on GitHub maven
-export GITHUB_USERNAME="komalsinghgurjar"
-export GITHUB_TOKEN=""
+export USERNAME="komalsinghgurjar"
+export TOKEN=""
+
 
 echo "GitHub environment variables set successfully!"
 

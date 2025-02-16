@@ -43,8 +43,8 @@ tasks.named<Test>("test") {
 
 // publishing 
 group = "io.github.komalsinghgurjar"  // Replace with your package group
-artifactIdVal = "javaLiveMusicBeatDetectionLib"
-versionVal = "1.0.0"
+val artifactIdVal: String? = "java-live-music-beat-detection-lib"
+val versionVal: String? = "1.0.0"
 
 publishing {
     publications {
@@ -61,9 +61,10 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/komalsinghgurjar/javaLiveMusicBeatDetectionLib")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-                password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
-            }
+    username = (project.findProperty("gpr.user") as? String) ?: System.getenv("USERNAME")
+    password = (project.findProperty("gpr.token") as? String) ?: System.getenv("TOKEN")
+}
+
         }
    }
 }
